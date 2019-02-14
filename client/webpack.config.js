@@ -4,7 +4,7 @@ const path = require('path'),
 
 module.exports = {
     entry: {
-        app: ['./src/app/index.tsx', 'webpack-hot-middleware/client'],
+        app: ['./src/app/index.tsx'],
         vendor: ['react', 'react-dom']
     },
     output: {
@@ -25,8 +25,14 @@ module.exports = {
             { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
         ]
     },
+    devServer: {
+        proxy: {
+            '/api': "http://localhost:3001"
+        }
+      },
     plugins: [
         new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'src', 'app', 'index.html') }),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoEmitOnErrorsPlugin()
     ]
 }
