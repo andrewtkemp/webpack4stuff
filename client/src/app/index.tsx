@@ -1,5 +1,5 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { App } from './components/App';
-ReactDOM.render(<App compiler="Typescript" framework="React" bundler="Webpack" />,
+import { AppRouter } from './router';
+ReactDOM.render(<AppRouter/>,
 document.getElementById('root'));
