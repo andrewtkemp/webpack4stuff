@@ -1,4 +1,4 @@
-.message {
+.textPosition {
   display: flex;
   align-items: center;
 }
@@ -11,4 +11,8 @@
 
 .error {
   background: #f44336 !important;
+}
+
+.closeIcon{
+  color:white;
 }
