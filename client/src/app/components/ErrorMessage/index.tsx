@@ -4,19 +4,43 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
+import { StyleRulesCallback, WithStyles, withStyles, createStyles } from "@material-ui/core";
 import * as s from './style.css';
 
-type Props = {
-    message:String
+export interface IErrorMessageProps {
+    message:String,
+    classes:{
+        root:string;
+        error:string;
+        closeIcon:string;
+        iconVariant:string;
+    }
 }
 
-type State = {
+export interface IErrorMessageState {
     open:boolean
 }
+export const STYLES = createStyles({
+    root: {
+        display: "flex",
+        alignItems: "center"
+    },
+    error:{
+        backgroundColor: "#f44336"
+    },
+    iconVariant:{
+        opacity: 0.9,
+        marginRight: "8px",
+        fontSize:"20px"
+    },
+    closeIcon:{
+        color:"white"
+    }
+});
 
 
-export default class ErrorMessage extends React.Component<Props, State>{
-    readonly state: State = {
+export class ErrorMessage extends React.Component<IErrorMessageProps, IErrorMessageState>{
+    readonly state: IErrorMessageState = {
         open:true
     }
     closeError = () => {
@@ -25,16 +49,17 @@ export default class ErrorMessage extends React.Component<Props, State>{
         })
     }
     render(){
-        const {closeIcon, iconVariant, textPosition, error} = s;
         const { closeError } = this;
         const { message } = this.props;
         const { open } = this.state;
+        const {error, root, iconVariant, closeIcon} = this.props.classes;
         return(
-            <div>
+            <div className={root}>
                 <Snackbar open={open}>
-                    <SnackbarContent className={error} message={<span className={textPosition}><ErrorIcon className={iconVariant}/>{message}</span>} action={[<IconButton key={"wah"} onClick={closeError}><CloseIcon className={closeIcon}/></IconButton>]}/>
+                    <SnackbarContent className={error} message={<span className={root}><ErrorIcon className={iconVariant}/>{message}</span>} action={[<IconButton key={"wah"} onClick={closeError}><CloseIcon className={closeIcon}/></IconButton>]}/>
                 </Snackbar>
             </div>
         )
     }
 }
+export default withStyles(STYLES, { withTheme: true })(ErrorMessage);
