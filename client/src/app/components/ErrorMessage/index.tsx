@@ -4,8 +4,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
-import { StyleRulesCallback, WithStyles, withStyles, createStyles } from "@material-ui/core";
-import * as s from './style.css';
+import { withStyles, createStyles } from "@material-ui/core";
 
 export interface IErrorMessageProps {
     message:String,

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Grid from '@material-ui/core/Grid';
 import ErrorMessage from "../ErrorMessage";
+import UserForm from "../UserForm";
 
 export class App extends React.Component<{}, {}> {
    // componentDidMount(){
@@ -16,7 +17,7 @@ export class App extends React.Component<{}, {}> {
    render() {
       return (
          <Grid container direction="row" justify="space-evenly" alignItems="center">
-            <ErrorMessage message={"This is an Error"}/>
+               <UserForm/>
          </Grid>
       )
    }
