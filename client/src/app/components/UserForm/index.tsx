@@ -7,6 +7,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { withStyles, createStyles } from "@material-ui/core";
@@ -21,6 +22,7 @@ export interface IUserFormProps {
 }
 
 export interface IUserFormState {
+    error: boolean,
     username: string;
     password: string;
 }
@@ -30,7 +32,8 @@ export const STYLES = createStyles({
         alignItems: "center",
         width: 400,
         marginLeft: 'auto',
-        marginRight: 'auto'
+        marginRight: 'auto',
+        marginTop:"150px"
     },
     form: {
         width: '100%'   
@@ -50,6 +53,7 @@ export const STYLES = createStyles({
 
 export class UserForm extends React.Component<IUserFormProps, IUserFormState>{
     readonly state: IUserFormState = {
+        error:false,
         username: "",
         password: ""
     }
@@ -59,6 +63,10 @@ export class UserForm extends React.Component<IUserFormProps, IUserFormState>{
             ...prevState,
             [name]: value,
           }))
+    }
+    handleSubmit = (event:React.FormEvent<HTMLFormElement>):void => {
+        event.preventDefault();
+        console.log(this.state);
     }
     render() {
         const { classes } = this.props;
@@ -71,14 +79,12 @@ export class UserForm extends React.Component<IUserFormProps, IUserFormState>{
             <Typography component="h1" variant="h5">
             Sign in
             </Typography>
-                <form className={classes.form}>
+                <form className={classes.form} onSubmit={this.handleSubmit}>
                     <FormControl margin="normal" required fullWidth>
-                        <InputLabel htmlFor="username">Username</InputLabel>
-                        <Input type="text" onChange={this.handleChange} name="username" value={this.state.username} autoFocus autoComplete="username" />
+                        <TextField error onChange={this.handleChange} label="Username" name="username" value={this.state.username} />
                     </FormControl>
                     <FormControl margin="normal" required fullWidth>
-                        <InputLabel htmlFor="password">Password</InputLabel>
-                        <Input name="password" type="password" id="password" onChange={this.handleChange} value={this.state.password} autoComplete="current-password" />
+                        <TextField name="password" id="password" label="Password" onChange={this.handleChange} value={this.state.password} />
                     </FormControl>
                     <FormControlLabel
                         control={<Checkbox value="remember" color="primary" />}
