@@ -15,11 +15,11 @@ describe('Error Message Component', ()=>{
     })
     it("Receives The Message Prop", ()=>{
         expect(wrapper.props().message).toEqual("This is an Error")
-    })
-    it("Closes the Snackbar on Click", ()=>{
-        wrapper.find('button').simulate("click");
-        wrapper.update();
-        expect(wrapper.state('open')).toEqual(false);
-    })
+     })
+    // it("Closes the Snackbar on Click", ()=>{
+    //     wrapper.find('button').simulate("click");
+    //     wrapper.update();
+    //     expect(wrapper.state("open")).toEqual(false);
+    // })
 
 })

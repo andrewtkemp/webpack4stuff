@@ -43,6 +43,7 @@ export class ErrorMessage extends React.Component<IErrorMessageProps, IErrorMess
         open:true
     }
     closeError = () => {
+        console.log("Closing Time", this.state)
         this.setState({
            open:!this.state.open 
         })

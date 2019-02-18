@@ -29,7 +29,9 @@
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|less)$": "identity-obj-proxy"
     },
-    "setupFilesAfterEnv": ["<rootDir>/src/app/setupEnzyme.ts"]
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/app/setupEnzyme.ts"
+    ]
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
@@ -37,15 +39,21 @@
     "@types/enzyme-adapter-react-16": "^1.0.4",
     "@types/react-redux": "^7.0.1",
     "@types/react-router-dom": "^4.3.1",
+    "@types/recompose": "^0.30.4",
     "@types/redux": "^3.6.0",
+    "@types/redux-actions": "^2.3.2",
     "axios": "^0.18.0",
     "babel-jest": "^24.1.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
+    "recompose": "^0.30.0",
     "redux": "^4.0.1",
-    "styled-components": "^4.1.3"
+    "redux-actions": "^2.6.4",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^4.1.3",
+    "typesafe-actions": "^3.1.0"
   },
   "devDependencies": {
     "@types/enzyme": "^3.1.18",
