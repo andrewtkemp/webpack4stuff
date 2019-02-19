@@ -7,8 +7,7 @@ const initialState = {
 }
 
 const authReducer = handleActions({
-    ["USER_LOGIN"]:(state, action)=>{
-        console.log("LOGGING IN", state, action);
+    ["LOGIN_USER"]:(state, action)=>{
         return action.payload;
     }
 }, initialState);
